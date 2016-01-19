@@ -1,0 +1,36 @@
+{
+  "name": "todo.app.angular2",
+  "version": "1.0.0",
+  "description": "a todo app using MEAN Stack with Angular 2",
+  "main": "node server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crizstian/todoApp-Angular-2.git"
+  },
+  "keywords": [
+    "todo",
+    "angular",
+    "angular2",
+    "MEAN",
+    "nodejs"
+  ],
+  "author": "Cristian Ramirez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Crizstian/todoApp-Angular-2/issues"
+  },
+  "homepage": "https://github.com/Crizstian/todoApp-Angular-2#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mongojs": "^2.3.0",
+    "morgan": "^1.6.1",
+    "path": "^0.12.7"
+  }
+}
