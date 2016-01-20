@@ -21,6 +21,10 @@ Line 50 : Endpoint to update a todo
 
 Line 79 : Endpoint to delete a todo
 
-### To Run the App
+### To Run the server
 
 in the terminal run `npm start` will start the server at `http//:localhost:3000`
+
+### To Run the client
+
+still in development process...

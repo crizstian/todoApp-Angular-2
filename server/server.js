@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// using the imported routes
 app.use('/', index);
 app.use('/api/v1/', todos);
 
