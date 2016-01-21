@@ -37,4 +37,8 @@ the following steps are:
 
 1.- install dependencies `npm i && bower i`
 
+2.- run `gulp` it will compile, copy and deploy a `dist folder` for the developed App
+
+3.- open a browser and go to `http://localhost:3000`
+
 still in development process...
