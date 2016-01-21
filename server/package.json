@@ -1,0 +1,37 @@
+{
+  "name": "server.rest.mean.app",
+  "version": "1.0.0",
+  "description": "Rest API Server for MEAN App with Angular 2",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crizstian/todoApp-Angular-2.git"
+  },
+  "keywords": [
+    "todo",
+    "angular",
+    "angular2",
+    "MEAN",
+    "nodejs"
+  ],
+  "author": "Cristian Ramirez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Crizstian/todoApp-Angular-2/issues"
+  },
+  "homepage": "https://github.com/Crizstian/todoApp-Angular-2#readme",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "cli-table": "^0.3.1",
+    "express": "^4.13.3",
+    "mongojs": "^2.3.0",
+    "restify": "^4.0.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-watch": "^4.3.5"
+  }
+}

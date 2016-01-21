@@ -1,17 +1,18 @@
 import {Component}   from 'angular2/core';
 import {TodoService} from '../todoServcie/todoService.service';
 import {OnInit}      from 'angular2/core';
+import {Todo}        from './todo';
 
 @Component({
   selector    : 'todo-app',
-  styleUrls   : ['app/todo/todo.component.css'],
-  templateUrl : 'app/todo/todo.component.html',
+  styleUrls   : ['app/todo/todo.css'],
+  templateUrl : 'app/todo/todo.html',
   providers   : [TodoService]
 })
 export class TodoComponent implements OnInit {
 
   public title: string = 'M.E.A2.N ToDo App';
-  public todos;
+  public todos: Todo[] = [];
 
   ngOnInit() {
       this.getHeroes();
@@ -23,19 +24,19 @@ export class TodoComponent implements OnInit {
     this._todoService.getAll()
         .subscribe(todos => this.todos = todos,
                    err   => this.logError(err),
-                   ()    => console.log('Operation Complete'));
+                   ()    => console.log(this.todos));
   }
 
   addTodo($event, todoText) {
 
     if ($event.which === 13) {
-      let _todo = {
+      let _todo: Todo = {
         text : todoText.value,
         isCompleted : false
       };
 
       // calling the service to save the todo
-      this._todoService.save(_todo)
+      this._todoService.save(JSON.stringify(_todo))
           .subscribe(
              data => {
                        this.todos.push(data);

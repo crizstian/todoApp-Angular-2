@@ -13,6 +13,26 @@ router.get('/todos',(req, res, next) => {
       res.json(todos);
   });
 });
+/* POST/SAVE a Todo */
+router.post('/todo',(req, res, next) => {
+    let todo = JSON.parse(req.body);
+
+    console.log("getting data: "+ todo);
+
+    if (!todo.text || !(todo.isCompleted + '')) {
+        res.status(400);
+        res.json({
+            "error": "Invalid Data"
+        });
+    } else {
+        db.todos.save(todo, (err, result) => {
+          if(err)
+            res.send(err);
+          else
+            res.json(result);
+        });
+    }
+});
 
 router.route('/todo/:id')
   /* GET One Todo with the provided ID */
@@ -25,23 +45,6 @@ router.route('/todo/:id')
           else
             res.json(todos);
       });
-  })
-  /* POST/SAVE a Todo */
-  .post((req, res, next) => {
-      let todo = req.body;
-      if (!todo.text || !(todo.isCompleted + '')) {
-          res.status(400);
-          res.json({
-              "error": "Invalid Data"
-          });
-      } else {
-          db.todos.save(todo, (err, result) => {
-            if(err)
-              res.send(err);
-            else
-              res.json(result);
-          });
-      }
   })
   /* PUT/UPDATE a Todo */
   .put((req, res, next) => {

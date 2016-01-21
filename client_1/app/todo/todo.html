@@ -1,0 +1,15 @@
+<div class="">
+  <h1>{{title}}</h1>
+  <hr>
+  <input type="text" #todoText placeholder="add a todo" (keyup)="addTodo($event, todoText)">
+
+  <h3 *ngIf="todos.length === 0">No todos yet!</h3>
+
+  <ul *ngIf="todos">
+    <li *ngFor="#todo of todos">
+      <input type="checkbox" [checked]="todo.isCompleted" (click)="updateStatus(todo)">
+      <span [class.strike]="todo.isCompleted">{{todo.text}}</span>
+    </li>
+  </ul>
+
+</div>

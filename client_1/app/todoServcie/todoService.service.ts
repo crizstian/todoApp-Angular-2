@@ -4,34 +4,33 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class TodoService{
-
-  data: any;
+  private baseAPI: string = 'http://localhost:8000/api/v1/todo';
 
   constructor(private http: Http) { }
 
-  getAll(){
-  	return this.http.get('http://localhost:8000/api/v1/todos')
+  getAll() {
+  	return this.http.get(this.baseAPI+'s')
                     .map(res => { return res.json(); });
   }
 
   get(id){
-  	return this.http.get('/api/v1/todo/'+id)
-                    .map(res => res.json());
+  	return this.http.get(this.baseAPI+'/'+id)
+                    .map(res => { return res.json(); });
   }
 
   save(todo){
-  	return this.http.post('/api/v1/todo', todo)
-                    .map(res => res.json());
+  	return this.http.post(this.baseAPI, todo)
+                    .map(res => { return res.json(); });
   }
 
   update(todo){
-  	return this.http.put('/api/v1/todo/'+todo._id, todo)
-                    .map(res => res.json());
+  	return this.http.put(this.baseAPI+'/'+todo._id, todo)
+                    .map(res => { return res.json(); });
   }
 
   delete(id){
-  	return this.http.delete('/api/v1/todo/'+id)
-                    .map(res => res.json());
+  	return this.http.delete(this.baseAPI+'/'+id)
+                    .map(res => { return res.json(); });
   }
 
 }
