@@ -8,10 +8,10 @@
     </div>
     <div class="row col-md-12 todos">
         <br>
-        <div class="alert alert-info text-center" *ngIf="!todos">
+        <div class="alert alert-info text-center" *ngIf="todos">
             <h3>No Todos yet!</h3>
         </div>
-        <div *for="#todo of todos" class="col-md-12 col-sm-12 col-xs-12 todo" [class.strike]="todo.isCompleted">
+        <div *ngFor="#todo of todos" class="col-md-12 col-sm-12 col-xs-12 todo" [class.strike]="todo.isCompleted">
             <div class="col-md-1 col-sm-1 col-xs-1">
                 <input type="checkbox" [checked]="todo.isCompleted" (click)="updateStatus(todo)">
             </div>

@@ -4,11 +4,12 @@ import {RouteConfig, RouterOutlet,
 import {TodoComponent}             from './todo/todo.component';
 
 @Component({
-  selector: 'my-app',
-  template: `<router-outlet></router-outlet>`,
-  directives: [ROUTER_DIRECTIVES, RouterOutlet]
+  selector  : 'my-app',
+  template  : `<router-outlet></router-outlet>`,
+  directives: [ROUTER_DIRECTIVES, RouterOutlet],
+  providers : []
 })
 @RouteConfig([
-  {path: '/',      name: 'Home',     component: TodoComponent, useAsDefault: true }
+  {path: '/', name: 'Home', component: TodoComponent, useAsDefault: true }
 ])
 export class AppComponent {}

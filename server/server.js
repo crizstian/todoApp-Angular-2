@@ -4,6 +4,7 @@ const path         = require('path');
 const logger       = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
+const cors         = require('cors');
 
 var index = require('./routes/index');
 var todos = require('./routes/todos');
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 // using the imported routes
 app.use('/', index);
@@ -33,7 +35,7 @@ app.use((req, res, next) => {
     next(err);
 });
 
-const server = app.listen(3000, () => {
+const server = app.listen(8000, () => {
     let host = 'localhost';
     let port = server.address().port;
     console.log('App listening at http://%s:%s', host, port);

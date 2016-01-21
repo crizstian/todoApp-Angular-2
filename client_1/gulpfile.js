@@ -35,7 +35,8 @@ gulp.task('copy:libs', ['clean'], function() {
           'node_modules/rxjs/bundles/Rx.js',
           'node_modules/angular2/bundles/angular2.dev.js',
           'node_modules/angular2/bundles/router.dev.js',
-          'node_modules/immutable/dist/immutable.js'
+          'node_modules/immutable/dist/immutable.js',
+          'node_modules/angular2/bundles/http.dev.js'
         ])
         .pipe(gulp.dest('dist/lib'))
 });

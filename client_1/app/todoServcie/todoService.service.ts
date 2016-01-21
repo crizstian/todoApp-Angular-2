@@ -1,16 +1,17 @@
 import {Http}       from 'angular2/http';
 import {Injectable} from 'angular2/core';
+import 'rxjs/Rx';
 
 @Injectable()
 export class TodoService{
 
   data: any;
 
-  constructor(public http: Http) { }
+  constructor(private http: Http) { }
 
   getAll(){
-  	return this.http.get('/api/v1/todos')
-                    .map(res => res.json());
+  	return this.http.get('http://localhost:8000/api/v1/todos')
+                    .map(res => { return res.json(); });
   }
 
   get(id){

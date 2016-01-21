@@ -3,8 +3,7 @@
     "align": [
       true,
       "parameters",
-      "arguments",
-      "statements"
+      "arguments"
     ],
     "ban": false,
     "class-name": true,
@@ -17,7 +16,7 @@
     "eofline": true,
     "forin": true,
     "indent": [
-      true,
+      false,
       "spaces"
     ],
     "interface-name": false,
@@ -72,8 +71,7 @@
       true,
       "check-open-brace",
       "check-catch",
-      "check-else",
-      "check-whitespace"
+      "check-else"
     ],
     "quotemark": [
       true,
@@ -111,14 +109,6 @@
       "check-format",
       "allow-leading-underscore",
       "ban-keywords"
-    ],
-    "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
     ]
   }
 }
