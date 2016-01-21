@@ -1,29 +1,27 @@
 ## ToDo App using Angular 2 beta with the MEAN Stack
 
-add the dependencies from the `package.json` file with `npm i --save` to our project.
+add the dependencies from the `package.json` file with `npm i --save` in `server folder` as well as in the `client folder`.
 
 ### Server config
 Things to notice
 
-Line 5 :  MongoDB instance configured it with Mongojs.
+- Enabaling Cors that let Angular to connect with the API
 
-Line 8 :  Endpoint to get all todos
+- MongoDB instance configured it with Mongojs.
 
-Line 15 : created chainable route handlers for a route path, because the path is specified at a single location,
+- Endpoint to get all todos
 
-					creating modular routes is helpful, as is reducing redundancy and typos.
+- Endpoint to get one todo based on the id provided
 
-Line 17 : Endpoint to get one todo based on the id provided
+- Endpoint to save a todo
 
-Line 31 : Endpoint to save a todo
+- Endpoint to update a todo
 
-Line 50 : Endpoint to update a todo
-
-Line 79 : Endpoint to delete a todo
+- Endpoint to delete a todo
 
 ### To Run the server
 
-in the terminal run `npm start` will start the server at `http//:localhost:3000`
+in the terminal run `gulp` will start the server at `http//:localhost:3000`
 
 ### To Run the client
 

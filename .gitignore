@@ -1,9 +1,8 @@
-node_modules/
+server/node_modules
+server/routes
 client_1/node_modules
 client_1/bower_components
 client_1/dist
 client_1/typings
 client_1/app/**/*.js
 client_1/app/**/*.map
-angularGulp/
-angularGulp/angular2-tour-of-heroes
