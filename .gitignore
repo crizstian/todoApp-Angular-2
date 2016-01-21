@@ -6,3 +6,4 @@ client_1/typings
 client_1/app/**/*.js
 client_1/app/**/*.map
 angularGulp/
+angularGulp/angular2-tour-of-heroes
