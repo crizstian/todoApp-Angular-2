@@ -26,5 +26,15 @@ Line 79 : Endpoint to delete a todo
 in the terminal run `npm start` will start the server at `http//:localhost:3000`
 
 ### To Run the client
+#### Aproach 1
+
+guiding from the repo `https://github.com/colineberhardt/angular2-tour-of-heroes` remmoving the node-uuid that was,
+causing some error issues.
+
+the following steps are:
+
+- you have to move to the folder client_1
+
+1.- install dependencies `npm i && bower i`
 
 still in development process...
