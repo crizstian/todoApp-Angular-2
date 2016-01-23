@@ -74,7 +74,7 @@ gulp.task('serve', ['build'], function() {
     }
   });
 
-  gulp.watch(['app/**/*', 'index.html', 'styles.css'], ['buildAndReload']);
+  gulp.watch(['app/**/*.*', 'index.html', 'styles.css'], ['buildAndReload']);
 });
 
 gulp.task('build', ['tslint', 'compile', 'copy:libs', 'copy:assets', 'copy:bower']);

@@ -1,16 +1,24 @@
 import {Http}       from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import 'rxjs/Rx';
+import {Todo} from '../todo/todo-model';
 
 @Injectable()
 export class TodoService{
+
+  todos: Todo[] = [];
   private baseAPI: string = 'http://localhost:8000/api/v1/todo';
 
   constructor(private http: Http) { }
 
   getAll() {
   	return this.http.get(this.baseAPI+'s')
-                    .map(res => { return res.json(); });
+                    .map(        res => { return res.json(); })
+                    .subscribe(todos => {for(let todo of todos){
+                                            this.todos.push(new Todo(todo._id,todo.text,todo.isCompleted));
+                                          }
+                                        },
+                               err   => this.logError(err));
   }
 
   get(id){
@@ -31,6 +39,10 @@ export class TodoService{
   delete(id){
   	return this.http.delete(this.baseAPI+'/'+id)
                     .map(res => { return res.json(); });
+  }
+
+  logError(err) {
+    console.error('There was an error: ' + err);
   }
 
 }

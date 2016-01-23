@@ -5,7 +5,7 @@
     font-family: calibri;
 }
 
-.strike span {
+.strike span{
     text-decoration: line-through;
     color: #ccc;
 }
