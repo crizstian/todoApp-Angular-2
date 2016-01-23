@@ -1,7 +1,7 @@
 import {Http}       from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import 'rxjs/Rx';
-import {Todo} from '../todo/todo-model';
+import {Todo} from '../todo/todo-model/todo-model';
 
 @Injectable()
 export class TodoService{

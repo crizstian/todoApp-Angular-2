@@ -1,6 +1,6 @@
 import {Component}   from 'angular2/core';
 import {TodoService} from '../../todoServcie/todoService.service';
-import {Todo}        from '../todo-model';
+import {Todo}        from '../todo-model/todo-model';
 
 @Component({
   selector : 'todo-input',
@@ -16,10 +16,9 @@ export class TodoInput{
   constructor(public todoService: TodoService) { }
 
   onSubmit(){
-    this.todo.isCompleted = false;
     this.todoService.save(JSON.stringify(this.todo))
         .subscribe(
-           data => this.todoService.todos.push(data),
+           data => this.todoService.todos.push(this.todo),
            err  => console.log(err),
            ()   => this.todo = new Todo());
   }

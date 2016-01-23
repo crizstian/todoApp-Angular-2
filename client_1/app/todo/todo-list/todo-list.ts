@@ -1,13 +1,14 @@
-import {Component, OnInit}   from 'angular2/core';
-import {TodoService} from '../../todoServcie/todoService.service';
+import {Component, OnInit} from 'angular2/core';
+import {TodoService}       from '../../todoServcie/todoService.service';
+import {TodoItem}          from '../todo-item/todo-item';
 
 @Component({
-  selector : 'todo-list',
-  styleUrls   : ['app/todo/todo.css'],
-  template : `<ul>
+  selector   : 'todo-list',
+  styleUrls  : ['app/todo/todo.css'],
+  directives : [TodoItem],
+  template   : `<ul>
                 <li *ngFor="#todo of todoService.todos">
-                  <input type="checkbox" (click)="todo.toggle()"/>
-                  <span [hidden]="todo.isCompleted">{{todo.text}}</span>
+                  <todo-item [todo]="todo"></todo-item>
                 </li>
               </ul>`
 })
