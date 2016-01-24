@@ -18,7 +18,7 @@ export class TodoInput{
   onSubmit(){
     this.todoService.save(JSON.stringify(this.todo))
         .subscribe(
-           data => this.todoService.todos.push(this.todo),
+           data => this.todoService.addTodo(this.todo),
            err  => console.log(err),
            ()   => this.todo = new Todo());
   }

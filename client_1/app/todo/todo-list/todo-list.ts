@@ -1,69 +1,37 @@
 import {Component, OnInit} from 'angular2/core';
 import {TodoService}       from '../../todoServcie/todoService.service';
 import {TodoItem}          from '../todo-item/todo-item';
+import {SearchPipe}        from '../../search-pipe/search-pipe';
+import {SearchCompleted}   from '../../search-pipe/search-completed';
 
 @Component({
   selector   : 'todo-list',
   styleUrls  : ['app/todo/todo.css'],
   directives : [TodoItem],
+  pipes      : [SearchPipe,SearchCompleted],
   template   : `<ul>
-                <li *ngFor="#todo of todoService.todos">
-                  <todo-item [todo]="todo"></todo-item>
+                <li *ngFor="#todo of todoService.todos | searchCompleted">
+                  <todo-item
+                    [todo]="todo"
+                    (toggle)="toggleTodo($event)">
+                  </todo-item>
                 </li>
               </ul>`
 })
 export class TodoList implements OnInit {
 
   ngOnInit() {
-    this.getHeroes();
-  }
-
-  constructor(public todoService: TodoService) {
-    console.log(this.todoService.todos);
-  }
-
-  getHeroes() {
     this.todoService.getAll();
   }
 
-  type(){
-    console.log(this.todoService.todos);
+  constructor(public todoService: TodoService) {
+    console.log(this.todoService);
   }
 
-  // updateTodoText($event, todo) {
-  //   if ($event.which === 13) {
-  //   		todo.text = $event.target.value;
-  //       let _todo = {
-  //             _id : todo._id,
-  //             text : todo.text ,
-  //             isCompleted : todo.isCompleted
-  //       };
-  //
-  //       // calling the service to update the todo text
-  //       this.todoService.update(_todo)
-  //           // wait for the response before resetting the state
-  //           .subscribe(data => this.setEditState(todo, false),
-  //                      err  => console.log(err),
-  //                      ()   => console.log('updated...'));
-  // 	}
-  // }
-  //
-  // updateStatus(todo) {
-  //    let _todo = {
-  //       _id : todo._id,
-  //       text : todo.text ,
-  //       isCompleted : !todo.isCompleted
-  //     };
-  //
-  //     // calling the service to update the todo status
-  //     this.todoService.update(_todo)
-  //         // wait for the response before updating the UI
-  //         .subscribe(data => todo.isCompleted = !todo.isCompleted,
-  //                    err  => console.log(err),
-  //                    ()   => console.log('updated...'));
-  //
-  // }
-  //
+  toggleTodo(todo){
+    this.todoService.toggleTodo(todo);
+  }
+
   // deleteTodo(todo) {
   //
   //   // calling the service to delete the todo

@@ -3,7 +3,7 @@
     "align": [
       true,
       "parameters",
-      "arguments"
+      ""
     ],
     "ban": false,
     "class-name": true,
