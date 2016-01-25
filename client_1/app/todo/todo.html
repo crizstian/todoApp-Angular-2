@@ -1,6 +1,8 @@
 <div class="">
   <h1>{{title}}</h1>
   <hr>
+  <todo-search (search)="term = $event"></todo-search>
   <todo-input></todo-input>
-  <todo-list></todo-list>
+  <status-select (select)="status = $event"></status-select>
+  <todo-list [status]="status" [term]="term"></todo-list>
 </div>

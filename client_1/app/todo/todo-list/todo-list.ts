@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {TodoService}       from '../../todoServcie/todoService.service';
 import {TodoItem}          from '../todo-item/todo-item';
 import {SearchPipe}        from '../../search-pipe/search-pipe';
@@ -10,7 +10,9 @@ import {SearchCompleted}   from '../../search-pipe/search-completed';
   directives : [TodoItem],
   pipes      : [SearchPipe,SearchCompleted],
   template   : `<ul>
-                <li *ngFor="#todo of todoService.todos | searchCompleted">
+                <li *ngFor="#todo of todoService.todos
+                | searchCompleted : status
+                | search: term">
                   <todo-item
                     [todo]="todo"
                     (toggle)="toggleTodo($event)">
@@ -18,7 +20,10 @@ import {SearchCompleted}   from '../../search-pipe/search-completed';
                 </li>
               </ul>`
 })
-export class TodoList implements OnInit {
+export class TodoList {
+
+  @Input() status;
+  @Input() term;
 
   ngOnInit() {
     this.todoService.getAll();

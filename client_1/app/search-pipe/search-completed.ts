@@ -4,7 +4,7 @@ import {Pipe} from 'angular2/core';
   name : 'searchCompleted'
 })
 export class SearchCompleted{
-  transform(value){
-    return value.filter((item) => item.isCompleted === 'started');
+  transform(value, [isCompleted]){
+    return value.filter((item) => item.isCompleted === isCompleted);
   }
 }

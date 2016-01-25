@@ -5,7 +5,10 @@ import {Todo}        from '../todo-model/todo-model';
 @Component({
   selector : 'todo-input',
   template : `<form (submit)="onSubmit()">
+                <br/>
+                <span>Add new todo</span>
                 <input type="text" placeholder="add a todo" [(ngModel)]="todo.text">
+                <br/>
               </form>
   `
 })

@@ -21,10 +21,9 @@ export class TodoService{
   // to handle the event of toggle by emmiting the todo and update the reference
   // of the todos array so that the isCompleted pipe can act over the new reference of the todos array
   toggleTodo(todo:Todo){
-    console.log(todo);
-    todo.toggle();
-
     const i = this.todos.indexOf(todo);
+    const isCompleted = (todo.isCompleted === 'started') ? 'completed' : 'started';
+    const toggledTodo = Object.assign({},todo,{isCompleted});
 
     this.todos = [...this.todos.slice(0,i),
                   todo,
