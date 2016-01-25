@@ -55,4 +55,14 @@ the following steps are:
 
 3.- open a browser and go to `http://localhost:3000`
 
-still in development process...
+### Run E2E Tests to Angular 2 with Gulp + Protractor
+
+the following steps are:
+
+- you have to get up and running the ToDo App.
+
+1.- `cd to e2e folder`
+
+2.- run `gulp` it will compile, update the web driver, and run the tests for you.
+
+3.- check the results in the terminal.
