@@ -4,11 +4,11 @@
 
 #### Server
 
-- go to the server folder and check it's own readme
+- For more details, go to the server folder and check it's own readme
 
 #### Client
 
-- go to the client folder and check it's own readme
+- For more details, go to the client folder and check it's own readme
 
 #### E2E Tests with Protractor
 
@@ -18,9 +18,11 @@
 
 - `clone the githube repo`
 
-- install the dependencies for the both projects the server and the client both of them has it's own package.json file
+- install the dependencies for the both projects the server and the client
 
-### Aditional MongoDB Instalation 
+  both of them has it's own `package.json` file and `gulpfile`.
+
+### Aditional MongoDB Instalation
 
 For Mac/Linux first create the folder where mongo is going to save the collections
 
