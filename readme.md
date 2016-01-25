@@ -2,6 +2,24 @@
 
 add the dependencies from the `package.json` file with `npm i --save` in `server folder` as well as in the `client folder`.
 
+### Install MongoDB with Homebrew or Download it from the official page
+
+`mkdir -p /data/db`
+
+Set permissions for the data directory
+
+Ensure that user account running mongod has correct permissions for the directory:
+
+`sudo chmod 0755 /data/db`
+
+`sudo chown $USER /data/db`
+
+Run MongoDB!
+
+`iTerm buffer 1: mongod`
+
+`iTerm buffer 2: mongo`
+
 ### Server config
 Things to notice
 
