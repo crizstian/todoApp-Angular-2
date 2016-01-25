@@ -4,7 +4,7 @@ the following steps are:
 
 - you have to get up and running the ToDo App.
 
-- run `gulp` it will compile, update the web driver, and run the tests for you.
+- run `gulp e2e` it will compile, update the web driver, and run the tests for you.
 
 - check the results in the terminal.
 
