@@ -3,9 +3,10 @@ import {Component,Output,EventEmitter} from 'angular2/core';
 @Component({
   selector : 'todo-search',
   template : `
-              <br/>
-              <span>Todo Search</span>
-              <input #input (input)="search.emit(input.value)"/>
+              <div class="input-field col s6">
+                <input id="search_todo" type="text" class="validate" #input (input)="search.emit(input.value)"/>
+                <label for="search_todo">Search Todo</label>
+              </div>
              `
 })
 export class TodoSearch{

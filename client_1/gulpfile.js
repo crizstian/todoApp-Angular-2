@@ -22,10 +22,21 @@ gulp.task('copy:assets', ['clean'], function() {
 });
 
 // copy dependencies
+gulp.task('copy:bower_css',['clean'],function() {
+  return gulp.src(['bower_components/Materialize/dist/css/materialize.min.css'])
+             .pipe(gulp.dest('dist/vendor/css'));
+});
+gulp.task('copy:bower_js',['clean'],function() {
+  return gulp.src([
+              'bower_components/Materialize/dist/js/materialize.min.js',
+              'bower_components/jquery/dist/jquery.min.js'
+             ])
+             .pipe(gulp.dest('dist/vendor/js'));
+});
 
-gulp.task('copy:bower',['clean'],function() {
-  return gulp.src('bower_components/**/*.+(js|css)')
-             .pipe(gulp.dest('dist/vendor'));
+gulp.task('copy:bower',['clean','copy:bower_css','copy:bower_js'],function(){
+  return gulp.src('bower_components/Materialize/font/**/*.*')
+             .pipe(gulp.dest('dist/vendor/font'));
 });
 
 gulp.task('copy:libs', ['clean'], function() {

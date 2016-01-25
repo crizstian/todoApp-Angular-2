@@ -9,8 +9,8 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
                 }
               </style>
               <div>
-                <input type="checkbox" (click)="toggle.emit(todo)"/>
-                <span [ngClass]="todo.isCompleted">{{todo.text}}</span>
+                <input type="checkbox" id="test5" (click)="toggle.emit(todo)" />
+                <label for="test5"[ngClass]="todo.isCompleted">{{todo.text}}</label>
               </div>`
 })
 export class TodoItem{

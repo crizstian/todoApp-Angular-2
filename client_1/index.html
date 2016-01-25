@@ -3,8 +3,10 @@
 
 <head>
   <base href="/">
-  <!-- css styles -->
-  
+  <!--Import Google Icon Font-->
+   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--Import materialize.css-->
+   <link type="text/css" rel="stylesheet" href="vendor/css/materialize.min.css"  media="screen,projection"/>
   <!-- js libs -->
   <script src="lib/angular2-polyfills.js"></script>
   <script src="lib/system.src.js"></script>
@@ -23,9 +25,13 @@
       });
       System.import('app/boot').then(null, console.error.bind(console));
   </script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="vendor/js/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/js/materialize.min.js"></script>
 </head>
 
 <body>
+
   <my-app>Loading...</my-app>
 </body>
 

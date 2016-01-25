@@ -6,7 +6,7 @@ import {Todo} from '../todo/todo-model/todo-model';
 @Injectable()
 export class TodoService{
 
-  todos: Todo[] = new Array<Todo>(new Todo('','fuck'));
+  todos: Todo[] = new Array<Todo>(new Todo('','one'),new Todo('','two'),new Todo('','three','completed'));
   private baseAPI: string = 'http://localhost:8000/api/v1/todo';
 
   constructor(private http: Http) { }
@@ -26,7 +26,7 @@ export class TodoService{
     const toggledTodo = Object.assign({},todo,{isCompleted});
 
     this.todos = [...this.todos.slice(0,i),
-                  todo,
+                  toggledTodo,
                   ...this.todos.slice(i+1)
                  ];
   }

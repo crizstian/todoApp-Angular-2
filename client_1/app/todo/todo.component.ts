@@ -11,8 +11,4 @@ import {TodoSelect}  from './todo-selector/todo-selector';
   templateUrl : 'app/todo/todo.html',
   providers   : [TodoService]
 })
-export class TodoComponent {
-
-  public title: string = 'M.E.A.N Todo App with Angular 2';
-
-}
+export class TodoComponent {}

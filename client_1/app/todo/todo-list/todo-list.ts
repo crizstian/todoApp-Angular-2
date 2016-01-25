@@ -9,8 +9,9 @@ import {SearchCompleted}   from '../../search-pipe/search-completed';
   styleUrls  : ['app/todo/todo.css'],
   directives : [TodoItem],
   pipes      : [SearchPipe,SearchCompleted],
-  template   : `<ul>
-                <li *ngFor="#todo of todoService.todos
+  template   : `
+              <ul class="collection">
+                <li class="collection-item" *ngFor="#todo of todoService.todos
                 | searchCompleted : status
                 | search: term">
                   <todo-item
