@@ -39,11 +39,11 @@ Things to notice
 
 ### To Run the server
 
-in the terminal run `gulp` will start the server at `http//:localhost:3000`
+in the terminal run `gulp` will start the server at `http://localhost:8000`
 
 ### To Run the client
 
-#### Aproach 1
+#### Aproach 1 (not using TSD file's)
 
 the following steps are:
 
