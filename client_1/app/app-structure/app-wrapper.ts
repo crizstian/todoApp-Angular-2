@@ -1,7 +1,7 @@
-import {Component}                 from 'angular2/core';
-import {TodoComponent}             from '../todo/todo.component';
-import {AppFooter}                 from './app-footer';
-import {AppHeader}                 from './app-header';
+import {Component}     from 'angular2/core';
+import {TodoComponent} from '../todo/todo.component';
+import {AppFooter}     from './app-footer';
+import {AppHeader}     from './app-header';
 
 @Component({
   selector   : 'app-wrapper',
@@ -12,4 +12,10 @@ import {AppHeader}                 from './app-header';
               `,
   directives: [AppHeader,TodoComponent,AppFooter]
 })
-export class AppWrapper {}
+export class AppWrapper {
+
+  ngAfterViewInit() {
+
+  }
+
+}

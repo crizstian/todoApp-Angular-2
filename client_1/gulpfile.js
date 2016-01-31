@@ -16,9 +16,14 @@ gulp.task('clean', function () {
 });
 
 // copy static assets - i.e. non TypeScript compiled source
-gulp.task('copy:assets', ['clean'], function() {
+gulp.task('copy:assets', ['clean','copy:assets2'], function() {
   return gulp.src(['app/**/*', 'index.html', '!app/**/*.ts'], { base : './' })
              .pipe(gulp.dest('dist'))
+});
+
+gulp.task('copy:assets2', ['clean'], function() {
+  return gulp.src(['config.js','jspm_packages/system.js'], { base : './' })
+             .pipe(gulp.dest('dist/jspm'))
 });
 
 // copy dependencies
@@ -88,6 +93,6 @@ gulp.task('serve', ['build'], function() {
   gulp.watch(['app/**/*.*', 'index.html', 'styles.css'], ['buildAndReload']);
 });
 
-gulp.task('build', ['tslint', 'compile', 'copy:libs', 'copy:assets', 'copy:bower']);
+gulp.task('build', ['tslint', 'compile', 'copy:libs', 'copy:assets']);
 gulp.task('buildAndReload', ['build'], reload);
 gulp.task('default', ['serve']);

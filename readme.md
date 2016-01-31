@@ -8,15 +8,37 @@
 
 #### Client
 
+#### Client_1
+
+- The Client version 1 is developed with normal pattern.
+
 - For more details, go to the client folder and check it's own readme
+
+#### Client_redux
+
+- The Client version 2 is developed with redux pattern.
+
+Following the `<a href="http://victorsavkin.com/post/137821436516/managing-state-in-angular-2-applications" tagret="_blank">Victor Savkin blog post</a>`
+
+- For more details, go to the client_redux folder and check it's own readme
+
 
 #### E2E Tests with Protractor
 
 - go to the E2E folder and check it's own readme
 
+#### Development Requirements
+|----------------------------------------|
+| Dependency     | OS X Installation     |
+|----------------------------------------|
+| node.js        | `brew install nodejs` |
+|----------------------------------------|
+| gulp           | `npm install -g gulp` |
+|----------------------------------------|
+
 #### To Run the app
 
-- `clone the githube repo`
+- `clone the github repo`
 
 - install the dependencies for the both projects the server and the client
 

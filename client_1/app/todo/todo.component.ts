@@ -1,7 +1,7 @@
 import {Component}   from 'angular2/core';
 import {TodoService} from '../todoServcie/todoService.service';
 import {TodoInput}   from './todo-input/todo-input';
-import {TodoSearch}   from './todo-input/todo-search';
+import {TodoSearch}  from './todo-input/todo-search';
 import {TodoList}    from './todo-list/todo-list';
 import {TodoSelect}  from './todo-selector/todo-selector';
 

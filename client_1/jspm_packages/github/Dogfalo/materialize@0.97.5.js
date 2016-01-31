@@ -1,0 +1,1 @@
+module.exports = require("github:Dogfalo/materialize@0.97.5/js/materialize");

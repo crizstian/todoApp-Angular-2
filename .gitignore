@@ -6,3 +6,5 @@ client_1/dist
 client_1/typings
 client_1/app/**/*.js
 client_1/app/**/*.map
+client_2/
+client_jspm/

@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
   templateUrl : 'app/app-structure/templates/header.html'
 })
 export class AppHeader{
-  logo: string = 'M.E.A2.N App';
+  logo: string = ' ( Blog ) => Blog.from.CR';
   title: string = 'Todo App';
-  github:string = 'Fork Github';
+  github:string = 'Fork Me on Github';
 }
