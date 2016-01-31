@@ -18,7 +18,9 @@
 
 - The Client version 2 is developed with redux pattern.
 
-Following the `<a href="http://victorsavkin.com/post/137821436516/managing-state-in-angular-2-applications" tagret="_blank">Victor Savkin blog post</a>`
+Following the <code>
+<a href="http://victorsavkin.com/post/137821436516/managing-state-in-angular-2-applications" tagret="_blank">Victor Savkin blog post</a>
+</code>
 
 - For more details, go to the client_redux folder and check it's own readme
 
@@ -28,13 +30,19 @@ Following the `<a href="http://victorsavkin.com/post/137821436516/managing-state
 - go to the E2E folder and check it's own readme
 
 #### Development Requirements
-|----------------------------------------|
-| Dependency     | OS X Installation     |
-|----------------------------------------|
-| node.js        | `brew install nodejs` |
-|----------------------------------------|
-| gulp           | `npm install -g gulp` |
-|----------------------------------------|
+<code>
+<table>
+<tr>
+<td>Dependency</td><td>OS X Installation </td>
+</tr>
+<tr>
+<td>node.js </td><td>`brew install nodejs` </td>
+</tr>
+<tr>
+<td>gulp </td><td>`npm install -g gulp` </td>
+</tr>
+</table>
+</code>
 
 #### To Run the app
 

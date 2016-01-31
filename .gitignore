@@ -8,3 +8,5 @@ client_1/app/**/*.js
 client_1/app/**/*.map
 client_2/
 client_jspm/
+client_redux/dist
+client_redux/node_modules
