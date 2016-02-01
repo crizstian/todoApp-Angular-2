@@ -1,8 +1,8 @@
 import {OpaqueToken,provide,Inject} from 'angular2/core';
 import {Subject} from 'rxjs/Subject';
-import {Reducer} from '../logic/Reducers';
 import {Injectable} from 'angular2/core';
-import {AppState,Todo} from './AppState';
+import {AppState} from './AppState';
+import {Todo} from '../models/Todo';
 import {Action,AddTodoAction,ToggleTodoAction,SetVisibilityFilter} from './Actions';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
@@ -16,10 +16,9 @@ const initState  = new OpaqueToken("initState");
 export const dispatcher = new OpaqueToken("dispatcher");
 // state is an observable returned by the stateFn function.
 export const state      = new OpaqueToken("state");
-const reducer    = new Reducer();
 
 export const stateAndDispatcher = [
-  provide(initState,  {useValue: {todos: [], visibilityFilter: 'SHOW_ALL'}}),
+  provide(initState,  {useValue: {todos: [], visibilityFilter: 'started'}}),
   provide(dispatcher, {useValue: new Subject<Action>(null)}),
   provide(state,      {useFactory: stateFn, deps: [new Inject(initState), new Inject(dispatcher)]})
 ];
@@ -64,15 +63,12 @@ function todos(initState: Todo[], actions: Observable<Action>): Observable<Todo[
 
 function todo(todo:Todo, action:Action){
   if(action instanceof AddTodoAction){
-    return {
-      _id:action._id,
-      text:action.text,
-      completed:false
-    }
+      const isCompleted = (action.isCompleted) ? action.isCompleted : 'started';
+      return new AddTodoAction(action._id,action.text,isCompleted);
   }
   else if(action instanceof ToggleTodoAction){
-    const completed = !todo.completed;
-    return (action._id !== todo._id) ? todo : Object.assign({},todo,{completed});
+    const isCompleted = (todo.isCompleted === 'started') ? 'completed' : 'started';
+    return (action.todo._id !== todo._id) ? todo : Object.assign({},todo,{isCompleted});
   }
   else
     return todo;

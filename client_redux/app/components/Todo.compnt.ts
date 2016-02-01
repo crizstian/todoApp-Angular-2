@@ -1,15 +1,19 @@
 import {Component,Input,Output,EventEmitter} from 'angular2/core';
 
 @Component({
-  selector: 'todo',
-  template: `<span (click)="toggle.next()" [style.textDecoration]="textEffect">
-               {{text}}
-             </span>`
+  selector : 'todo-item',
+  template : `
+              <style>
+                .completed{
+                  text-decoration: line-through;
+                }
+              </style>
+              <div>
+                <input type="checkbox" id="test5" (click)="toggle.emit(todo)" />
+                <label for="test5" [ngClass]="todo.isCompleted">{{todo.text}}</label>
+              </div>`
 })
-export class Todo {
-  @Input() text: string;
-  @Input() completed: boolean;
+export class Todo{
+  @Input() todo;
   @Output() toggle = new EventEmitter();
-
-  get textEffect() { return this.completed ? 'line-through' : 'none'; }
 }

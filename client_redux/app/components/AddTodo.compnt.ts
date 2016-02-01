@@ -2,17 +2,33 @@ import {Component,Inject} from 'angular2/core';
 import {Action,AddTodoAction} from '../logic/Actions';
 import {Observer} from 'rxjs/Observer';
 import {dispatcher} from '../logic/StateAndDispatcher';
+import {TodoService} from '../services/TodoService.service';
+import {Logger} from '../services/Logger.service';
 
 @Component({
   selector: 'add-todo',
-  template: `<input #text><button (click)="addTodo(text.value)">Add Todo</button>`
+  template: `<form (submit)="onSubmit()">
+                <div class="input-field col s6">
+                  <input id="add_todo" type="text" class="validate" [(ngModel)]="todo.text"/>
+                  <label for="add_todo">Add new todo</label>
+                </div>
+              </form>`
 })
 export class AddTodo {
-  nextId:number = 0;
 
-  constructor(@Inject(dispatcher) private dispatcher: Observer<Action>) {}
+  todo = new AddTodoAction('','');
 
-  addTodo(value) {
-    this.dispatcher.next(new AddTodoAction(""+(this.nextId++), value));
+  constructor(@Inject(dispatcher) private dispatcher: Observer<Action>,
+              private _todoService:TodoService, private _logger:Logger) {}
+
+  onSubmit(){
+    this._todoService.save(JSON.stringify(this.todo))
+        .subscribe(
+           data => this.dispatcher.next(new AddTodoAction(data._id,data.text,data.isCompleted)),
+           err  => this._logger.log(err),
+           ()   => {
+            this.todo = new AddTodoAction('','');
+            this._logger.log('Todo Added');
+        });
+    }
   }
-}

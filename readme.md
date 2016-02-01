@@ -2,7 +2,7 @@
 
 ### Structure of the project
 
-#### Server
+#### Server (Partial working... 2 of 5 endpoints)
 
 - For more details, go to the server folder and check it's own readme
 
@@ -33,7 +33,7 @@ Following the <code>
 <code>
 <table>
 <tr>
-<td>Dependency</td><td>OS X Installation </td>
+<th>Dependency</td><td>OS X Installation </th>
 </tr>
 <tr>
 <td>node.js </td><td>`brew install nodejs` </td>

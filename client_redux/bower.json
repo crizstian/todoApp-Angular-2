@@ -1,0 +1,23 @@
+{
+  "name": "todo.app.angular2",
+  "version": "0.0.1",
+  "authors": [
+    "Cristian Ramirez <cristiano.rosetti@gmail.com>"
+  ],
+  "description": "Developing a MEAN app with Angular 2.0",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~1.0.3",
+    "Materialize": "materialize#~0.97.5"
+  }
+}

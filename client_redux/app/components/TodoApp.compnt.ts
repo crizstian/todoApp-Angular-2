@@ -2,17 +2,12 @@ import {Component} from 'angular2/core';
 import {AddTodo} from './AddTodo.compnt';
 import {TodoList} from './TodoList.compnt';
 import {Footer} from './FilterLink.compnt';
-import {stateAndDispatcher} from '../logic/StateAndDispatcher';
-
+import {TodoSelect} from './todo-selector';
+import {TodoSearch} from './todo-search';
 
 @Component({
-  selector: 'ng-demo',
-  template: `
-    <add-todo></add-todo>
-    <todo-list></todo-list>
-    <footer></footer>
-  `,
-  directives: [AddTodo, TodoList, Footer],
-  providers: [stateAndDispatcher]
+  selector: 'todo-app',
+  directives: [AddTodo, TodoList, Footer,TodoSelect,TodoSearch],
+  templateUrl : 'app/templates/todo.html'
 })
 export class TodoApp {}

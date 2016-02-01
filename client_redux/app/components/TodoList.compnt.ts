@@ -1,40 +1,51 @@
-import {Component,Inject} from 'angular2/core';
+import {Component,Inject,Input} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
 import {Todo} from './Todo.compnt';
 import {AppState} from '../logic/AppState';
-import {Action,AddTodoAction,ToggleTodoAction,SetVisibilityFilter} from '../logic/Actions';
+import {Action,AddTodoAction,ToggleTodoAction} from '../logic/Actions';
 import {dispatcher,state} from '../logic/StateAndDispatcher';
+import {TodoService} from '../services/TodoService.service';
+import {Logger} from '../services/Logger.service';
+import {SearchCompleted} from '../Pipes/search-completed';
+import {SearchPipe} from '../Pipes/search-pipe';
 
 @Component({
   selector: 'todo-list',
-  template: `<todo *ngFor="#t of todos"
-                [text]="t.text" [completed]="t.completed"
-                (toggle)="emitToggle(t.id)"></todo>`,
+  styleUrls  : ['app/css/todo.css'],
+  pipes      : [SearchPipe,SearchCompleted],
+  template: `<ul class="collection">
+              <li class="collection-item" *ngFor="#todo of getTodos
+                | async
+                | searchCompleted: status
+                | search: term">
+                <todo-item
+                  [todo]="todo"
+                  (toggle)="toggleTodo($event)">
+                </todo-item>
+              </li>
+            </ul>`,
   directives: [Todo]
 })
 export class TodoList {
 
-  todos:Todo[];
+  @Input() status;
+  @Input() term;
 
   constructor(@Inject(dispatcher) private dispatcher: Observer<Action>,
-              @Inject(state) private state: Observable<AppState>) {}
+              @Inject(state) private state: Observable<AppState>,
+              private _todoService:TodoService,
+              private _logger:Logger) {}
 
   ngOnInit() {
-    this.state.map(s => this.getVisibleTodos(s.todos, s.visibilityFilter))
-              .subscribe(s => this.todos = s);
+    this._todoService.getAll();
   }
 
-  emitToggle(id) {
-    this.dispatcher.next(new ToggleTodoAction(id));
+  get getTodos() {
+    return this.state.map(s => {return s.todos});
   }
-
-  getVisibleTodos(todos:any, filter: string): Todo[] {
-    return todos.filter(t => {
-      if (filter === "SHOW_ACTIVE") return !t.completed;
-      if (filter === "SHOW_COMPLETED") return t.completed;
-      return true;
-    });
+  // update on the server doesnt work
+  toggleTodo(todo){
+    this.dispatcher.next(new ToggleTodoAction(todo));
   }
-
 }

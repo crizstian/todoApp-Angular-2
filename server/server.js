@@ -61,9 +61,8 @@ server.get('/api/v1/todo/:id',(req, res, next) => {
 
 /* PUT/UPDATE a Todo */
 server.put('/api/v1/todo/:id',(req, res, next) => {
-  let todo = req.body;
+  let todo = JSON.parse(req.body);
   let updObj = {};
-
   if (todo.isCompleted)
       updObj.isCompleted = todo.isCompleted;
 
@@ -76,14 +75,16 @@ server.put('/api/v1/todo/:id',(req, res, next) => {
           "error": "Invalid Data"
       });
   } else {
-      db.todos.update({
-          _id: mongojs.ObjectId(req.params.id)
-      }, updObj, {}, (err, result) => {
-          if(err)
-            res.send(err);
-          else
-            res.json(result);
-      });
+    console.log("updating todo: "+ todo);
+    db.todos.updateOne(
+      { "text" : updObj.text },
+      { $set: { "isCompleted": updObj.isCompleted } }
+      , (err, result) => {
+        if(err)
+          res.send(err);
+        else
+          res.json(result);
+    });
   }
 });
 

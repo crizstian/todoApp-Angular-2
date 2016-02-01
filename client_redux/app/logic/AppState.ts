@@ -1,9 +1,4 @@
-
-export interface Todo {
-  _id:string;
-  text:string;
-  completed:boolean;
-}
+import {Todo} from '../models/Todo';
 
 export interface AppState {
   todos: Todo[];

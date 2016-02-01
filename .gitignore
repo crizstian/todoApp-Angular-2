@@ -10,3 +10,4 @@ client_2/
 client_jspm/
 client_redux/dist
 client_redux/node_modules
+client_redux/bower_components

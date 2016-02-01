@@ -1,9 +1,11 @@
+import {Todo} from '../models/Todo';
+
 export class AddTodoAction {
-  constructor(public _id: string, public text: string){}
+  constructor(public _id?: string, public text: string='', public isCompleted:string='started'){}
 }
 
 export class ToggleTodoAction    {
-  constructor(public _id: string){}
+  constructor(public todo:Todo){}
 }
 
 export class SetVisibilityFilter {
