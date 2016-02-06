@@ -9,11 +9,13 @@ import {Component,Input,Output,EventEmitter} from 'angular2/core';
                 }
               </style>
               <div>
-                <input type="checkbox" id="test5" (click)="toggle.emit(todo)" />
-                <label for="test5" [ngClass]="todo.isCompleted">{{todo.text}}</label>
+                <input type="checkbox" id="index" [checked]="todo.isCompleted==='completed' ? true : false" (click)="toggle.emit(todo)" />
+                <label for="index" [ngClass]="todo.isCompleted">{{todo.text}}</label>
               </div>`
 })
 export class Todo{
+  @Input() index;
   @Input() todo;
   @Output() toggle = new EventEmitter();
+
 }

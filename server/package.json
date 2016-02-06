@@ -21,17 +21,33 @@
   },
   "homepage": "https://github.com/Crizstian/todoApp-Angular-2#readme",
   "dependencies": {
-    "cors": "^2.7.1",
+    "body-parser": "^1.14.2",
     "cli-table": "^0.3.1",
-    "express": "^4.13.3",
-    "mongojs": "^2.3.0",
-    "restify": "^4.0.3"
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "gulp-mocha": "^2.2.0",
+    "http-status": "^0.1.8",
+    "mocha": "^2.4.5",
+    "mongoose": "^4.4.2",
+    "passport": "^0.2.2",
+    "passport-facebook": "^2.1.0",
+    "stripe": "^3.9.0",
+    "superagent": "^1.7.2",
+    "underscore": "^1.8.3",
+    "wagner-core": "^0.1.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.1.1",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.0.6",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "gulp-mocha": "^2.0.1",
+    "mocha": "^2.2.4"
+  },
+  "scripts": {
+    "test": "mocha ./test/test.js",
+    "watch": "gulp watch"
   }
 }

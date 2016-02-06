@@ -20,6 +20,7 @@ import {SearchPipe} from '../Pipes/search-pipe';
                 | searchCompleted: status
                 | search: term">
                 <todo-item
+                  [index]="todo._id"
                   [todo]="todo"
                   (toggle)="toggleTodo($event)">
                 </todo-item>

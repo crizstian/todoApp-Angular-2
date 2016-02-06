@@ -14,7 +14,7 @@ gulp.task('nodemon', function () {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
     let server = livereload();
-    gulp.src(['*.js','routes/*.js'], { read: true })
+    gulp.src(['*.js','./**/*.js'], { read: true })
         .pipe(watch({ emit: 'all' }))
         .pipe(eslint())
         .pipe(eslint.format())
@@ -27,7 +27,7 @@ gulp.task('watch', function() {
 
 //lint js files
 gulp.task('lint', function() {
-    gulp.src(['*.js','routes/*.js'])
+    gulp.src(['*.js','./**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
