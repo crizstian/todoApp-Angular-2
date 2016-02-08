@@ -2,7 +2,7 @@
 
 ### Structure of the project
 
-#### Server (Partial working... 2 of 5 endpoints)
+#### Server
 
 - For more details, go to the server folder and check it's own readme
 

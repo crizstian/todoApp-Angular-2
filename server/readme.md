@@ -4,17 +4,30 @@ Things to notice
 
 - Enabaling Cors that let Angular to connect with the REST API in this Server.
 
-- MongoDB instance configured with Mongojs.
+- MongoDB instance configured with Mongoose.
 
-- Endpoint to get all todos
+- Using Wagner for dependecy injection in the express server.
 
-- Endpoint to get one todo based on the id provided
-
-- Endpoint to save a todo
-
-- Endpoint to update a todo
-
-- Endpoint to delete a todo
+<table>
+<tr>
+<th>Endpoint</td><td>Description </th>
+</tr>
+<tr>
+<td>Method: Get - `/api/v1/todos` </td><td>Endpoint to get all todos </td>
+</tr>
+<tr>
+<td>Method: Post - `/api/v1/todo/:id` </td><td>Endpoint to save a todo </td>
+</tr>
+<tr>
+<td>Method: Get - `/api/v1/todo/:id` </td><td>Endpoint to get one todo based on the id provided </td>
+</tr>
+<tr>
+<td>Method: Put - `/api/v1/todo/:id` </td><td>Endpoint to update a todo </td>
+</tr>
+<tr>
+<td>Method: Delete - `/api/v1/todo/:id` </td><td>Endpoint to delete a todo </td>
+</tr>
+</table>
 
 ### To Run the server
 
