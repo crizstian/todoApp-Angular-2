@@ -12,4 +12,8 @@ export class SetVisibilityFilter {
   constructor(public filter: string){}
 }
 
-export type Action = AddTodoAction|ToggleTodoAction|SetVisibilityFilter;
+export class DeleteTodoAction {
+  constructor(public id: string){}
+}
+
+export type Action = AddTodoAction|ToggleTodoAction|SetVisibilityFilter|DeleteTodoAction;

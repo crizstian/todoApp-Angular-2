@@ -100,12 +100,12 @@ describe('Backend Server - Routes and MongoDB Test', function() {
   });
   //
   it('can update a todo', function(done) {
-    var url = URL_ROOT+'/api/v1/todo/7';
+    var url = URL_ROOT+'/api/v1/todo/6';
 
     superagent
       .put(url)
       .send({
-        _id:"7",
+        _id:"6",
         text:"yyy",
         isCompleted:"completed"
       })

@@ -19,29 +19,27 @@ module.exports = function(wagner) {
     return (req,res) => {
       Todo.find({}, function(err, todos) {
         if (err) {
-          return res.status(status.INTERNAL_SERVER_ERROR)
-                    .json({ error: err.toString() });
+          return handleError(err,res);
         }
-        return res.json({todos:todos});
+        return res.json(todos);
       });
     };
   }));
 
-  api.post('/todo', wagner.invoke((Todo) => {
+  api.post('/todo', wagner.invoke((Todo,db) => {
     return (req,res) => {
-      let t = req.body;
+      let t = JSON.parse(req.body);
       let todo = new Todo({
-        _id:t._id,
+        _id:db.Types.ObjectId(),
         text: t.text,
         isCompleted: t.isCompleted
       });
 
-      Todo.create(todo,function(err,todo){
+      todo.save(function(err,todo){
         if (err) {
-          return res.status(status.INTERNAL_SERVER_ERROR)
-                    .json({ err: err.toString() });
+          return handleError(err,res);
         }
-        return res.json({todo:todo});
+        return res.json(todo);
       });
     };
   }));
@@ -49,34 +47,29 @@ module.exports = function(wagner) {
 
   api.put('/todo/:id', wagner.invoke((Todo) => {
     return (req,res) => {
-      let t = req.body;
-
+      let t = JSON.parse(req.body);
       Todo.findById(req.params.id,function(err,todo){
+        if (err) {
+          return handleError(err,res);
+        }
+        todo.isCompleted = t.isCompleted;
+        todo.text = t.text;
+        todo.save(function(err,todo){
           if (err) {
-            return res.status(status.INTERNAL_SERVER_ERROR)
-                      .json({ err: err.toString() });
+            return handleError(err,res);
           }
-          todo.isCompleted = t.isCompleted;
-          todo.text = t.text;
-          todo.save(function(err,todo){
-            if (err) {
-              return res.status(status.INTERNAL_SERVER_ERROR)
-                        .json({ err: err.toString() });
-            }
-            return res.json({todo:todo});
-          });
+          console.log(todo);
+          return res.json(todo);
+        });
       });
     };
   }));
 
   api.delete('/todo/:id', wagner.invoke((Todo) => {
     return (req,res) => {
-      let t = req.body;
-
       Todo.findByIdAndRemove(req.params.id,function(err,todo){
           if (err) {
-            return res.status(status.INTERNAL_SERVER_ERROR)
-                      .json({ err: err.toString() });
+            return handleError(err,res);
           }
           return res.json({todo:'deleted'});
       });
@@ -86,6 +79,11 @@ module.exports = function(wagner) {
   api.use(handleOne);
   return api;
 };
+
+function handleError(err,res){
+  return res.status(status.INTERNAL_SERVER_ERROR)
+            .json({ err: err.toString() });
+}
 
 function handleOne(err, req, res, next) {
   if (err) {

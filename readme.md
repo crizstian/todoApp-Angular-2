@@ -30,7 +30,6 @@ Following the <code>
 - go to the E2E folder and check it's own readme
 
 #### Development Requirements
-<code>
 <table>
 <tr>
 <th>Dependency</td><td>OS X Installation </th>
@@ -42,7 +41,6 @@ Following the <code>
 <td>gulp </td><td>`npm install -g gulp` </td>
 </tr>
 </table>
-</code>
 
 #### To Run the app
 

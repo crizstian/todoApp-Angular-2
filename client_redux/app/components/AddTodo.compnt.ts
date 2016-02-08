@@ -22,7 +22,7 @@ export class AddTodo {
               private _todoService:TodoService, private _logger:Logger) {}
 
   onSubmit(){
-    this._todoService.save(JSON.stringify(this.todo))
+    this._todoService.save(this.todo)
         .subscribe(
            data => this.dispatcher.next(new AddTodoAction(data._id,data.text,data.isCompleted)),
            err  => this._logger.log(err),

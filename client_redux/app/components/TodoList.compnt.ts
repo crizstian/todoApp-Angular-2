@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
 import {Todo} from './Todo.compnt';
 import {AppState} from '../logic/AppState';
-import {Action,AddTodoAction,ToggleTodoAction} from '../logic/Actions';
+import {Action,AddTodoAction,ToggleTodoAction,DeleteTodoAction} from '../logic/Actions';
 import {dispatcher,state} from '../logic/StateAndDispatcher';
 import {TodoService} from '../services/TodoService.service';
 import {Logger} from '../services/Logger.service';
@@ -22,7 +22,8 @@ import {SearchPipe} from '../Pipes/search-pipe';
                 <todo-item
                   [index]="todo._id"
                   [todo]="todo"
-                  (toggle)="toggleTodo($event)">
+                  (toggle)="toggleTodo($event)"
+                  (delete)="deleteTodo($event)">
                 </todo-item>
               </li>
             </ul>`,
@@ -45,8 +46,29 @@ export class TodoList {
   get getTodos() {
     return this.state.map(s => {return s.todos});
   }
-  // update on the server doesnt work
+
   toggleTodo(todo){
     this.dispatcher.next(new ToggleTodoAction(todo));
+    this.state.subscribe((s) =>{
+      s.todos.forEach((t) => {
+        if(t._id === todo._id){
+          this._todoService.update(t)
+              .subscribe(
+                 err  => this._logger.log(err),
+                 ()   => this._logger.log('Todo toggled')
+              );
+        }
+      });
+    });
+  }
+  
+  deleteTodo(id){
+    this._todoService.delete(id)
+        .subscribe(
+           data => this._logger.log(data),
+           err  => this._logger.log(err),
+           ()   => {
+             this.dispatcher.next(new DeleteTodoAction(id));
+        });
   }
 }

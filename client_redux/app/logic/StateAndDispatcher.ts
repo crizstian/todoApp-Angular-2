@@ -3,7 +3,7 @@ import {Subject} from 'rxjs/Subject';
 import {Injectable} from 'angular2/core';
 import {AppState} from './AppState';
 import {Todo} from '../models/Todo';
-import {Action,AddTodoAction,ToggleTodoAction,SetVisibilityFilter} from './Actions';
+import {Action,AddTodoAction,ToggleTodoAction,SetVisibilityFilter,DeleteTodoAction} from './Actions';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/subject/BehaviorSubject';
 import 'rxjs/add/operator/map';
@@ -57,6 +57,10 @@ function todos(initState: Todo[], actions: Observable<Action>): Observable<Todo[
 
     else if(action instanceof ToggleTodoAction)
       return state.map(t => todo(t, action));
+
+    else if(action instanceof DeleteTodoAction){
+      return state.filter(t => t._id !== action.id);
+    }
 
   }, initState);
 }
