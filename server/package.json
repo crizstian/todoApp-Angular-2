@@ -29,7 +29,7 @@
     "gulp-mocha": "^2.2.0",
     "http-status": "^0.1.8",
     "mocha": "^2.4.5",
-    "mongoose": "^4.4.2",
+    "mongoose": "~4.3.0",
     "passport": "^0.2.2",
     "passport-facebook": "^2.1.0",
     "stripe": "^3.9.0",

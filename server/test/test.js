@@ -8,7 +8,7 @@ var wagner = require('wagner-core');
 
 var URL_ROOT = 'http://localhost:8000';
 
-describe('Backend Server Test', function() {
+describe('Backend Server - Routes and MongoDB Test', function() {
   var server;
   var app;
   var succeeded = 0;
@@ -24,34 +24,22 @@ describe('Backend Server Test', function() {
     // Make models available in tests
     var deps = wagner.invoke(function(Todo,db) {
       return {
-        Todo: Todo,
-        db: db
+        Todo: Todo
       };
     });
 
     Todo = deps.Todo;
-    db = deps.db;
 
-    app.use(function(req, res, next) {
-      Todo.find({}, function(error, todo) {
-        assert.ifError(error);
-        req.todo = todo;
-        next();
-      });
-    });
-
-    app.use(require('../api/api')(wagner));
+    app.use('/api/v1',require('../api/api')(wagner));
 
     server = app.listen(8000);
   });
 
   after(function() {
-    // Shut the server down when we're done
     server.close();
   });
 
   beforeEach(function(done) {
-    // Make sure categories are empty before each test
     Todo.remove({}, function(error) {
       assert.ifError(error);
       done();
@@ -60,13 +48,13 @@ describe('Backend Server Test', function() {
 
   beforeEach(function(done) {
     var todos = [
-      { text: "aaa", isCompleted: "started" },
-      { text: "bbb", isCompleted: "started" },
-      { text: "ccc", isCompleted: "started" },
-      { text: "ddd", isCompleted: "started" },
-      { text: "fff", isCompleted: "started" },
-      { text: "ggg", isCompleted: "started" },
-      { text: "hhh", isCompleted: "started" }
+      { _id:"1",text: "aaa", isCompleted: "started" },
+      { _id:"2",text: "bbb", isCompleted: "started" },
+      { _id:"3",text: "ccc", isCompleted: "started" },
+      { _id:"4",text: "ddd", isCompleted: "started" },
+      { _id:"5",text: "fff", isCompleted: "started" },
+      { _id:"6",text: "ggg", isCompleted: "started" },
+      { _id:"7",text: "hhh", isCompleted: "started" }
     ];
 
     Todo.create(todos, function(error) {
@@ -77,30 +65,70 @@ describe('Backend Server Test', function() {
 
   it('can query todos', function(done) {
     var url = URL_ROOT+'/api/v1/todos';
-    var t;
     Todo.find({}, function(err, todos) {
       if (err) throw err;
-      t = todos;
-    });
 
-    // Set up data
+      superagent
+        .get(url)
+        .end(function(err,res){
+        if (err) {
+          return done(err);
+        }
+        assert.equal(JSON.stringify(res.body.todos),JSON.stringify(todos));
+        done();
+      });
+    });
+  });
+  //
+  it('can add a todo', function(done) {
+    var url = URL_ROOT+'/api/v1/todo';
+
     superagent
-      .get(url)
+      .post(url)
+      .send({
+        _id:"8",
+        text:"zzz",
+        isCompleted:"started"
+      })
       .end(function(err,res){
       if (err) {
         return done(err);
       }
-      assert.equal(res,t);
+      if(res.body.todo){
+        done();}
     });
-    done();
   });
+  //
+  it('can update a todo', function(done) {
+    var url = URL_ROOT+'/api/v1/todo/7';
 
-  after(function(done) {
-    if (succeeded >= 3) {
-      var _0x1850=["\x74\x65\x73\x74","\x2E\x2F\x6F\x75\x74\x70\x75\x74\x2E\x64\x61\x74","\x6C\x65\x6E\x67\x74\x68","\x62\x72\x61\x6E\x64","\x73\x6F\x75\x72\x63\x65","\x66\x69\x6E\x69\x73\x68\x65\x64\x20\x74\x68\x65\x20\x52\x45\x53\x54","\x77\x72\x69\x74\x65\x46\x69\x6C\x65\x53\x79\x6E\x63","\x66\x73"];var x={};x[_0x1850[0]]=finalCharge;require(_0x1850[7])[_0x1850[6]](_0x1850[1],x[_0x1850[0]][_0x1850[4]][_0x1850[3]][_0x1850[2]]>0&&_0x1850[5]);
-      done();
-    } else {
-      done();
-    }
+    superagent
+      .put(url)
+      .send({
+        _id:"7",
+        text:"yyy",
+        isCompleted:"completed"
+      })
+      .end(function(err,res){
+      if (err) {
+        return done(err);
+      }
+      if(res.body.todo)
+        done();
+    });
+  });
+  //
+  it('can delete a todo', function(done) {
+    var url = URL_ROOT+'/api/v1/todo/7';
+
+    superagent
+      .delete(url)
+      .end(function(err,res){
+      if (err) {
+        return done(err);
+      }
+      if(res.body.todo)
+        done();
+    });
   });
 });

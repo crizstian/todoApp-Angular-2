@@ -2,6 +2,9 @@
 const mongoose = require('mongoose');
 
 const todoSchema = {
+  _id: {
+    type: String
+  },
   text: {
     type: String,
     required: true

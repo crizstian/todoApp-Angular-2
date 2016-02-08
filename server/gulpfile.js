@@ -7,7 +7,7 @@ const livereload = require('gulp-livereload');
 
 //register nodemon task
 gulp.task('nodemon', function () {
-  nodemon({ script: 'server.js', env: { 'NODE_ENV': 'development' }})
+  nodemon({ script: './api/server.js', env: { 'NODE_ENV': 'development' }})
     .on('restart');
 });
 
@@ -20,7 +20,7 @@ gulp.task('watch', function() {
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 
-    gulp.watch(['*.js','routes/*.js']).on('change', function(file) {
+    gulp.watch(['*.js','./**/*.js']).on('change', function(file) {
       server.changed(file.path);
     });
 });
