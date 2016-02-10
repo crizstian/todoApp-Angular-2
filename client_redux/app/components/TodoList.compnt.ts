@@ -61,7 +61,7 @@ export class TodoList {
       });
     });
   }
-  
+
   deleteTodo(id){
     this._todoService.delete(id)
         .subscribe(

@@ -28,7 +28,8 @@ gulp.task('copy:bower_css',['clean'],function() {
 gulp.task('copy:bower_js',['clean'],function() {
   return gulp.src([
               'bower_components/Materialize/dist/js/materialize.min.js',
-              'bower_components/jquery/dist/jquery.min.js'
+              'bower_components/jquery/dist/jquery.min.js',
+              'bower_components/jquery-ui/jquery-ui.min.js'
              ])
              .pipe(gulp.dest('dist/vendor/js'));
 });
